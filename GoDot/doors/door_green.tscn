@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpayos8v2k0p4"]
+
+[ext_resource type="Script" path="res://doors/doors_script.gd" id="1_cijxy"]
+[ext_resource type="Texture2D" uid="uid://b0felay6umhb6" path="res://Graphics/door_portal.png" id="1_s1ojq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf8x2"]
+atlas = ExtResource("1_s1ojq")
+region = Rect2(0, 0, 20, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6qpn"]
+atlas = ExtResource("1_s1ojq")
+region = Rect2(20, 0, 20, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nilg"]
+atlas = ExtResource("1_s1ojq")
+region = Rect2(40, 0, 20, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6h0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf8x2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6qpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nilg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="DoorGreen" type="Node2D"]
+script = ExtResource("1_cijxy")
+
+[node name="green_door_animated_sprite_2d" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u6h0t")
+autoplay = "default"
+frame_progress = 0.825776

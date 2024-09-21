@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://28831wnaue7r"]
+
+[ext_resource type="Script" path="res://Ingrediens/ingredients_script.gd" id="1_ha3vc"]
+[ext_resource type="Texture2D" uid="uid://cd61df522d1br" path="res://Graphics/cream_animated.png" id="1_quw76"]
+[ext_resource type="AudioStream" uid="uid://cfpwn7cx82w0c" path="res://Ingrediens/ingredient_pickup_sound.mp3" id="2_1vfta"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqcve"]
+atlas = ExtResource("1_quw76")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7bk8"]
+atlas = ExtResource("1_quw76")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsbel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqcve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7bk8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3mbx"]
+size = Vector2(9, 14)
+
+[node name="MilkScene" type="Area2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_ha3vc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -8)
+sprite_frames = SubResource("SpriteFrames_gsbel")
+autoplay = "default"
+frame_progress = 0.45216
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -7)
+shape = SubResource("RectangleShape2D_m3mbx")
+
+[node name="Ingredient_pickup_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1vfta")
+volume_db = -7.367
+pitch_scale = 0.7
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

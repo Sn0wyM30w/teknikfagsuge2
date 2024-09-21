@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2k8nc0y3f1wl"]
+
+[ext_resource type="Texture2D" uid="uid://cterbiusxq6g4" path="res://Graphics/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_gcx6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcds3"]
+size = Vector2(13, 14)
+
+[node name="SmallPlatformGreen" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gcx6t")
+region_enabled = true
+region_rect = Rect2(239.491, 46.3378, 17.3827, 17.7778)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_rcds3")
+one_way_collision = true

@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1ko10aern5er"]
+
+[ext_resource type="Script" path="res://Enemy 1 (worm)/Wormy.gd" id="1_1u01h"]
+[ext_resource type="Texture2D" uid="uid://dh0riep0w2olt" path="res://Graphics/Worm/Movement_(32 x 32).png" id="1_tq4wl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dh4a"]
+atlas = ExtResource("1_tq4wl")
+region = Rect2(1, 18, 31, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n23if"]
+atlas = ExtResource("1_tq4wl")
+region = Rect2(32, 18, 31, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2per"]
+atlas = ExtResource("1_tq4wl")
+region = Rect2(63, 18, 31, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvlm8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dh4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n23if")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2per")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cdwon"]
+radius = 5.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rarh8"]
+size = Vector2(26, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txgtw"]
+size = Vector2(56, 17)
+
+[node name="Worm" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_1u01h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uvlm8")
+autoplay = "default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cdwon")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(13, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-12, 0)
+
+[node name="edgeRight" type="RayCast2D" parent="."]
+target_position = Vector2(16, 10)
+
+[node name="edgeLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 10)
+
+[node name="worm_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worm_hitbox"]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_rarh8")
+debug_color = Color(0.656519, 0.46764, 0.591904, 0.42)
+
+[node name="wormy_gets_die" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wormy_gets_die"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_txgtw")
+debug_color = Color(0.471138, 0.531613, 0.69425, 0.42)
+
+[connection signal="body_entered" from="worm_hitbox" to="." method="_on_worm_hitbox_body_entered"]
+[connection signal="body_exited" from="worm_hitbox" to="." method="_on_worm_hitbox_body_exited"]
+[connection signal="body_entered" from="wormy_gets_die" to="." method="_on_wormy_gets_die_body_entered"]
+[connection signal="body_exited" from="wormy_gets_die" to="." method="_on_wormy_gets_die_body_exited"]

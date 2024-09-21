@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bud7ymjhq48eu"]
+
+[ext_resource type="Texture2D" uid="uid://h5y2ky84dkdv" path="res://Graphics/PlatformFall.png" id="1_5adbn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wis84"]
+size = Vector2(30, 12)
+
+[node name="platformFall" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5adbn")
+region_enabled = true
+region_rect = Rect2(208.018, 109.792, 32.6073, 18.7668)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wis84")
+one_way_collision = true

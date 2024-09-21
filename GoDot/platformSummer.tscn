@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://lgx0iaf2ps3x"]
+
+[ext_resource type="Texture2D" uid="uid://cxtwe0ps60rxq" path="res://Graphics/platformSummer.png" id="1_iflxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbmiq"]
+size = Vector2(30, 13)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_iflxc")
+region_enabled = true
+region_rect = Rect2(207.783, 94.075, 34.0149, 18.5322)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_wbmiq")
+one_way_collision = true

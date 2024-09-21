@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cuv4di1raqkcx"]
+
+[node name="killzone2" type="Area2D"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

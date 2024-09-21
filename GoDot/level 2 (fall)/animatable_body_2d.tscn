@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://chseesgkhofm3"]
+
+[ext_resource type="Texture2D" uid="uid://dregkhwcexytk" path="res://Graphics/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="1_xtkfp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00qif"]
+size = Vector2(14, 14)
+
+[node name="smallPlatformFall" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xtkfp")
+region_enabled = true
+region_rect = Rect2(239.937, 47.1701, 16.7049, 16.2024)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_00qif")
+one_way_collision = true

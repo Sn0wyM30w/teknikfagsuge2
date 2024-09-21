@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://kkhss8y6c5h8"]
+
+[ext_resource type="Script" path="res://Ingrediens/ingredients_script.gd" id="1_6al0a"]
+[ext_resource type="Texture2D" uid="uid://cd61df522d1br" path="res://Graphics/cream_animated.png" id="1_h3an7"]
+[ext_resource type="AudioStream" uid="uid://cfpwn7cx82w0c" path="res://Ingrediens/ingredient_pickup_sound.mp3" id="2_k724k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8o6x"]
+atlas = ExtResource("1_h3an7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jacim"]
+atlas = ExtResource("1_h3an7")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_de0wk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8o6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jacim")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ey0ak"]
+radius = 6.0
+height = 12.0
+
+[node name="SugarScene" type="Area2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_6al0a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -8)
+sprite_frames = SubResource("SpriteFrames_de0wk")
+autoplay = "default"
+frame_progress = 0.652801
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_ey0ak")
+
+[node name="Ingredient_pickup_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_k724k")
+volume_db = -7.367
+pitch_scale = 0.7
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

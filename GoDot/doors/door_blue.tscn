@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7jhvuktgw15c"]
+
+[ext_resource type="Texture2D" uid="uid://b0felay6umhb6" path="res://Graphics/door_portal.png" id="1_r8yco"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wudrv"]
+atlas = ExtResource("1_r8yco")
+region = Rect2(0, 50, 20, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8fwj"]
+atlas = ExtResource("1_r8yco")
+region = Rect2(20, 50, 20, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3nxu"]
+atlas = ExtResource("1_r8yco")
+region = Rect2(40, 50, 20, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dsrc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wudrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8fwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3nxu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="DoorBlue" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2dsrc")
+autoplay = "default"
+frame_progress = 0.781844

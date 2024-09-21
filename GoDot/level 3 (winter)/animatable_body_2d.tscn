@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwsdm2uwklu8p"]
+
+[ext_resource type="Texture2D" uid="uid://bkosp0vow2kub" path="res://Graphics/Seasonal Tilesets/4 - Winter World/Terrain (16 x 16).png" id="1_tf3vr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anion"]
+size = Vector2(13, 14)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tf3vr")
+region_enabled = true
+region_rect = Rect2(240.3, 47.0342, 17.0224, 16.7721)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_anion")
+one_way_collision = true
